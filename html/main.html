@@ -1,0 +1,161 @@
+<html>
+
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="site">
+        <div class="left">
+        </div>
+        <div class="right">
+        </div>
+        <div class=" slots">
+            <div class="reel1">
+                <div class="symbol_0_-1_" id="symbol_0_-1_">
+                    symbol
+                </div>
+                <div class="symbol_0_0_" id="symbol_0_0_">
+                    symbol2
+                </div>
+                <div class="symbol_0_1_" id="symbol_0_1_">
+                    symbol3
+                </div>
+                <div class="symbol_0_2_" id="symbol_0_2_">
+                    symbol4
+                </div>
+            </div>
+            <div class="reel2">
+                <div class="symbol_1_-1_" id="symbol_1_-1_">
+                    symbol
+                </div>
+                <div class="symbol_1_0_" id="symbol_1_0_">
+                    symbol2
+                </div>
+                <div class="symbol_1_1_" id="symbol_1_1_">
+                    symbol3
+                </div>
+                <div class="symbol_1_2_" id="symbol_1_2_">
+                    symbol4
+                </div>
+            </div>
+            <div class="reel3">
+                <div class="symbol_2_-1_" id="symbol_2_-1_">
+                    symbol
+                </div>
+                <div class="symbol_2_0_" id="symbol_2_0_">
+                    symbol2
+                </div>
+                <div class="symbol_2_1_" id="symbol_2_1_">
+                    symbol3
+                </div>
+                <div class="symbol_2_2_" id="symbol_2_2_">
+                    symbol4
+                </div>
+            </div>
+            <div class="reel4">
+                <div class="symbol_3_-1_" id="symbol_3_-1_">
+                    symbol
+                </div>
+                <div class="symbol_3_0_" id="symbol_3_0_">
+                    symbol2
+                </div>
+                <div class="symbol_3_1_" id="symbol_3_1_">
+                    symbol3
+                </div>
+                <div class="symbol_3_2_" id="symbol_3_2_">
+                    symbol4
+                </div>
+            </div>
+            <div class="reel5">
+                <div class="symbol_4_-1_" id="symbol_4_-1_">
+                    symbol
+                </div>
+                <div class="symbol_4_0_" id="symbol_4_0_">
+                    symbol2
+                </div>
+                <div class="symbol_4_1_" id="symbol_4_1_">
+                    symbol3
+                </div>
+                <div class="symbol_4_2_" id="symbol_4_2_">
+                    symbol4
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-block">
+            <div class="betButton" id="betButton"></div>
+            <div class="spinButton" id="spinButton"></div>
+            <div class="autoplayButton" id="autoplayButton"></div>
+        </div>
+        <div class="top-block">
+            blech
+        </div>
+    </div>
+</body>
+<script>
+    var allReels = new Array();
+    var originalYValues = ['-33.33%', '0%', '33.33%', '66.66%'];
+    for (var reel = 0; reel < 5; reel++) {
+        allReels[reel] = new Array();
+        for (var row = -1; row < 3; row++) {
+            var symID = "symbol" + "_" + reel + "_" + row + "_";
+            allReels[reel][row] = symID;
+        }
+    }
+
+    var betButton = document.getElementById("betButton");
+    var spinButton = document.getElementById("spinButton");
+    var autoplayButton = document.getElementById("autoplayButton");
+
+    spinButton.addEventListener("click", spinButtonClicked);
+
+    var singleSpinDuration = 0.2;
+    var totalSpinDuration = 2;
+    var resolveTime = 1;
+    var totalResolveTime = resolveTime;
+
+    function spinButtonClicked() {
+        var time = singleSpinDuration;
+        var originalTime = time;
+        for (var reel = 0; reel < 1; reel++) {
+            for (var row = -1; row < 3; row++) {
+                console.log('hom' + allReels[reel][row].toString());
+                var sym = document.getElementById(allReels[reel][row].toString());
+                sym.addEventListener("webkitAnimationEnd", moveUpSymbol);
+                // var animName = sym.id.toString().split('_')
+                sym.style.animationName = "spin" + sym.id.toString();
+                sym.style.animationTimingFunction = "linear";
+                sym.style.animationDuration = time + "s";
+                sym.style.animationPlayState = "running";
+                time = time - (originalTime * 0.25);
+            }
+        }
+    }
+
+    function moveUpSymbol() {
+        console.log("resettings-=" + this.id);
+        this.removeEventListener("webkitAnimationEnd", moveUpSymbol);
+        this.style.top = "-33.33%";
+        this.style.animationName = "genericSymbolSpin";
+        this.style.animationDuration = singleSpinDuration + "s";
+        this.style.animationPlayState = "running";
+        var iterationCount = Math.round(totalSpinDuration / singleSpinDuration);
+        this.style.animationIterationCount = iterationCount.toString();
+        this.addEventListener("webkitAnimationEnd", resolveSymbol);
+    }
+
+    function resolveSymbol() {
+        resolveTime = 0 + (totalResolveTime * 0.25);
+        console.log('resolving' + this.id + resolveTime);
+        this.removeEventListener("webkitAnimationEnd", resolveSymbol);
+        this.style.animationDuration = resolveTime + "s";
+        this.style.animationTimingFunction = "linear";
+        this.style.animationName = "resolve" + this.id;
+        this.style.animationPlayState = "running";
+        this.style.animationIterationCount = 1;
+        this.style.animationFillMode = "forwards";
+    }
+</script>
+
+</html>

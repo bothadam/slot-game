@@ -1,0 +1,382 @@
+.site {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-rows: 2fr 6fr 2fr;
+    grid-template-columns: 2fr 8fr 2fr;
+    grid-template-areas:
+        "leftside          top-block           rightside "
+        "leftside          slots               rightside "
+        "leftside          bottom-block        rightside ";
+    z-index: 2000;
+}
+
+.left {
+    grid-area: leftside;
+    background-color: black;
+}
+
+.right {
+    grid-area: rightside;
+    background-color: black;
+}
+
+.slots {
+    background-color: red;
+    grid-area: slots;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "0     1      2      3      4";
+    z-index: -1;
+}
+
+.reel1 {
+    background-color: rgb(156, 156, 156);
+    position: relative;
+    z-index: 1000;
+}
+
+
+.reel2 {
+    background-color: rgb(156, 156, 156);
+    position: relative;
+    z-index: 1000;
+}
+
+.reel3 {
+    background-color: rgb(187, 187, 187);
+    position: relative;
+    z-index: 1000;
+
+}
+
+.reel4 {
+    background-color: rgb(187, 187, 187);
+    position: relative;
+    z-index: 1000;
+
+}
+
+.reel5 {
+    background-color: rgb(187, 187, 187);
+    position: relative;
+    z-index: 1000;
+}
+
+.symbol_0_-1_ {
+    background-color: rgb(0, 204, 255);
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    top: -33.33%;
+}
+
+.symbol_0_0_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(0, 153, 255);
+    top: 0%;
+}
+
+.symbol_0_1_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(0, 110, 255);
+    top: 33.33%;
+}
+
+.symbol_0_2_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(0, 81, 255);
+    top: 66.66%;
+}
+
+/* REEL 1 */
+.symbol_1_-1_ {
+    background-color: rgb(255, 72, 0);
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    top: -33.33%;
+}
+
+.symbol_1_0_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(255, 51, 0);
+    top: 0%;
+}
+
+.symbol_1_1_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(255, 136, 0);
+    top: 33.33%;
+}
+
+.symbol_1_2_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(212, 137, 39);
+    top: 66.66%;
+}
+
+/* REEL 2 */
+
+.symbol_2_-1_ {
+    background-color: rgb(166, 255, 0);
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    top: -33.33%;
+}
+
+.symbol_2_0_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(166, 228, 21);
+    top: 0%;
+}
+
+.symbol_2_1_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(85, 219, 23);
+    top: 33.33%;
+}
+
+.symbol_2_2_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(70, 196, 39);
+    top: 66.66%;
+}
+
+
+/* REEL 3 */
+
+.symbol_3_-1_ {
+    background-color: rgb(255, 208, 0);
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    top: -33.33%;
+}
+
+.symbol_3_0_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(255, 238, 0);
+    top: 0%;
+}
+
+.symbol_3_1_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(221, 224, 32);
+    top: 33.33%;
+}
+
+.symbol_3_2_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(181, 184, 53);
+    top: 66.66%;
+}
+
+
+/* REEL 4 */
+
+.symbol_4_-1_ {
+    background-color: rgb(68, 0, 255);
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    top: -33.33%;
+}
+
+.symbol_4_0_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(80, 31, 218);
+    top: 0%;
+}
+
+.symbol_4_1_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(87, 50, 189);
+    top: 33.33%;
+}
+
+.symbol_4_2_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    background-color: rgb(95, 75, 150);
+    top: 66.66%;
+}
+
+.top-block {
+    grid-area: top-block;
+    background-color: rgb(0, 0, 0);
+
+}
+
+.bottom-block {
+    grid-area: bottom-block;
+    background-color: rgb(0, 0, 0);
+    display: grid;
+    grid-template-columns: 2fr 2fr 3fr 2fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        ".      betButton      spinButton      autoplayButton       .";
+
+}
+
+.betButton {
+    grid-area: betButton;
+    background-image: url("../assets/console/betButton.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.spinButton {
+    grid-area: spinButton;
+    background-image: url("../assets/console/spinButton.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.autoplayButton {
+    grid-area: autoplayButton;
+    background-image: url("../assets/console/autoplayButton.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@-webkit-keyframes spinsymbol_0_-1_ {
+    from {
+        top: -33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+@-webkit-keyframes spinsymbol_0_0_ {
+    from {
+        top: 0%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+@-webkit-keyframes spinsymbol_0_1_ {
+    from {
+        top: 33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+
+@-webkit-keyframes spinsymbol_0_2_ {
+    from {
+        top: 66.66%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+@-webkit-keyframes genericSymbolSpin {
+    from {
+        top: -33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+
+@-webkit-keyframes resolvesymbol_0_-1_ {
+    from {
+        top: -33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: -33.33%;
+        opacity: 100%;
+    }
+}
+
+@-webkit-keyframes resolvesymbol_0_0_ {
+    from {
+        top: -33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 0%;
+        opacity: 100%;
+    }
+}
+
+@-webkit-keyframes resolvesymbol_0_1_ {
+    from {
+        top: -33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 33.33%;
+        opacity: 100%;
+    }
+}
+
+
+@-webkit-keyframes resolvesymbol_0_2_ {
+    from {
+        top: -33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 66.66%;
+        opacity: 100%;
+    }
+}
