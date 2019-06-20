@@ -13,72 +13,52 @@
         <div class=" slots">
             <div class="reel1">
                 <div class="symbol_0_-1_" id="symbol_0_-1_">
-                    symbol
                 </div>
                 <div class="symbol_0_0_" id="symbol_0_0_">
-                    symbol2
                 </div>
                 <div class="symbol_0_1_" id="symbol_0_1_">
-                    symbol3
                 </div>
                 <div class="symbol_0_2_" id="symbol_0_2_">
-                    symbol4
                 </div>
             </div>
             <div class="reel2">
                 <div class="symbol_1_-1_" id="symbol_1_-1_">
-                    symbol11
                 </div>
                 <div class="symbol_1_0_" id="symbol_1_0_">
-                    symbol12
                 </div>
                 <div class="symbol_1_1_" id="symbol_1_1_">
-                    symbol13
                 </div>
                 <div class="symbol_1_2_" id="symbol_1_2_">
-                    symbol14
                 </div>
             </div>
             <div class="reel3">
                 <div class="symbol_2_-1_" id="symbol_2_-1_">
-                    symbol
                 </div>
                 <div class="symbol_2_0_" id="symbol_2_0_">
-                    symbol2
                 </div>
                 <div class="symbol_2_1_" id="symbol_2_1_">
-                    symbol3
                 </div>
                 <div class="symbol_2_2_" id="symbol_2_2_">
-                    symbol4
                 </div>
             </div>
             <div class="reel4">
                 <div class="symbol_3_-1_" id="symbol_3_-1_">
-                    symbol
                 </div>
                 <div class="symbol_3_0_" id="symbol_3_0_">
-                    symbol2
                 </div>
                 <div class="symbol_3_1_" id="symbol_3_1_">
-                    symbol3
                 </div>
                 <div class="symbol_3_2_" id="symbol_3_2_">
-                    symbol4
                 </div>
             </div>
             <div class="reel5">
                 <div class="symbol_4_-1_" id="symbol_4_-1_">
-                    symbol
                 </div>
                 <div class="symbol_4_0_" id="symbol_4_0_">
-                    symbol2
                 </div>
                 <div class="symbol_4_1_" id="symbol_4_1_">
-                    symbol3
                 </div>
                 <div class="symbol_4_2_" id="symbol_4_2_">
-                    symbol4
                 </div>
             </div>
 
@@ -101,6 +81,10 @@
         for (var row = -1; row < 3; row++) {
             var symID = "symbol" + "_" + reel + "_" + row + "_";
             allReels[reel][row] = symID;
+            var rand = Math.floor(Math.random() * (19 - 1 + 1) + 1);
+            document.getElementById(allReels[reel][row]).style.backgroundImage = "url('../assets/symbols/" + rand +
+                ".jpeg')";
+
         }
     }
 
@@ -153,6 +137,10 @@
         this.style.animationPlayState = "running";
         this.style.animationIterationCount = 1;
         this.style.animationFillMode = "forwards";
+        var rand = Math.floor(Math.random() * (19 - 1 + 1) + 1);
+        document.getElementById(allReels[animName[1]][animName[2]]).style.backgroundImage = "url('../assets/symbols/" +
+            rand +
+            ".jpeg')";
     }
 </script>
 
