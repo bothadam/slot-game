@@ -27,16 +27,16 @@
             </div>
             <div class="reel2">
                 <div class="symbol_1_-1_" id="symbol_1_-1_">
-                    symbol
+                    symbol11
                 </div>
                 <div class="symbol_1_0_" id="symbol_1_0_">
-                    symbol2
+                    symbol12
                 </div>
                 <div class="symbol_1_1_" id="symbol_1_1_">
-                    symbol3
+                    symbol13
                 </div>
                 <div class="symbol_1_2_" id="symbol_1_2_">
-                    symbol4
+                    symbol14
                 </div>
             </div>
             <div class="reel3">
@@ -116,15 +116,14 @@
     var totalResolveTime = resolveTime;
 
     function spinButtonClicked() {
-        var time = singleSpinDuration;
-        var originalTime = time;
-        for (var reel = 0; reel < 1; reel++) {
+
+        for (var reel = 0; reel < 5; reel++) {
+            var time = singleSpinDuration;
+            var originalTime = time;
             for (var row = -1; row < 3; row++) {
-                console.log('hom' + allReels[reel][row].toString());
                 var sym = document.getElementById(allReels[reel][row].toString());
                 sym.addEventListener("webkitAnimationEnd", moveUpSymbol);
-                // var animName = sym.id.toString().split('_')
-                sym.style.animationName = "spin" + sym.id.toString();
+                sym.style.animationName = "spinsymbol_0_" + row + "_";
                 sym.style.animationTimingFunction = "linear";
                 sym.style.animationDuration = time + "s";
                 sym.style.animationPlayState = "running";
@@ -134,7 +133,6 @@
     }
 
     function moveUpSymbol() {
-        console.log("resettings-=" + this.id);
         this.removeEventListener("webkitAnimationEnd", moveUpSymbol);
         this.style.top = "-33.33%";
         this.style.animationName = "genericSymbolSpin";
@@ -147,11 +145,11 @@
 
     function resolveSymbol() {
         resolveTime = 0 + (totalResolveTime * 0.25);
-        console.log('resolving' + this.id + resolveTime);
         this.removeEventListener("webkitAnimationEnd", resolveSymbol);
         this.style.animationDuration = resolveTime + "s";
         this.style.animationTimingFunction = "linear";
-        this.style.animationName = "resolve" + this.id;
+        var animName = this.id.toString().split('_');
+        this.style.animationName = "resolvesymbol_0_" + animName[2] + "_";
         this.style.animationPlayState = "running";
         this.style.animationIterationCount = 1;
         this.style.animationFillMode = "forwards";

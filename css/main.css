@@ -275,6 +275,9 @@
     background-size: contain;
 }
 
+/* ////////////////SPIN STARTS///////////////////// */
+/* REEL 1 */
+
 @-webkit-keyframes spinsymbol_0_-1_ {
     from {
         top: -33.33%;
@@ -320,6 +323,8 @@
     }
 }
 
+/* ////////////////GENERIC SPINS///////////////////// */
+
 @-webkit-keyframes genericSymbolSpin {
     from {
         top: -33.33%;
@@ -331,7 +336,8 @@
     }
 }
 
-
+/* //////////////RESOLVES/////////////////////// */
+/* REEL 1 Resolve */
 @-webkit-keyframes resolvesymbol_0_-1_ {
     from {
         top: -33.33%;
