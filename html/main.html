@@ -81,9 +81,9 @@
         for (var row = -1; row < 3; row++) {
             var symID = "symbol" + "_" + reel + "_" + row + "_";
             allReels[reel][row] = symID;
-            var rand = Math.floor(Math.random() * (19 - 1 + 1) + 1);
-            document.getElementById(allReels[reel][row]).style.backgroundImage = "url('../assets/symbols/" + rand +
-                ".jpeg')";
+            var rand = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+            document.getElementById(allReels[reel][row]).style.backgroundImage = "url('../assets/symbols/s" + rand +
+                ".png')";
 
         }
     }
@@ -137,10 +137,10 @@
         this.style.animationPlayState = "running";
         this.style.animationIterationCount = 1;
         this.style.animationFillMode = "forwards";
-        var rand = Math.floor(Math.random() * (19 - 1 + 1) + 1);
-        document.getElementById(allReels[animName[1]][animName[2]]).style.backgroundImage = "url('../assets/symbols/" +
+        var rand = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+        document.getElementById(allReels[animName[1]][animName[2]]).style.backgroundImage = "url('../assets/symbols/s" +
             rand +
-            ".jpeg')";
+            ".png')";
     }
 </script>
 
