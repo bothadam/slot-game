@@ -1,4 +1,9 @@
+import {
+    GameStateEvents
+} from "./GameStateEvents.js"
+
 var allReels = new Array();
+var gameStateEvents = new GameStateEvents();
 export class ReelController {
     constructor() {
         for (var reel = 0; reel < 5; reel++) {
@@ -23,17 +28,7 @@ export class ReelController {
         var resolveTime = 1;
         var totalResolveTime = resolveTime;
 
-        var slotStateChanged = new CustomEvent(
-            "slotStateChanged", {
-                detail: {
-                    state: "spin_starting",
-                },
-                bubbles: true,
-                cancelable: true
-            }
-        );
-
-        document.getElementById("betButton").dispatchEvent(slotStateChanged);
+        document.dispatchEvent(gameStateEvents.slotSpinning);
 
         for (var reel = 0; reel < 5; reel++) {
             var time = singleSpinDuration;
@@ -74,6 +69,7 @@ export class ReelController {
             document.getElementById(allReels[animName[1]][animName[2]]).style.backgroundImage = "url('../assets/symbols/s" +
                 rand +
                 ".png')";
+            document.dispatchEvent(gameStateEvents.slotStopped);
         }
     }
 
