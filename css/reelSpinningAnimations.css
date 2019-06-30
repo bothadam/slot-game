@@ -1,0 +1,108 @@
+/* Spin Start */
+
+@-webkit-keyframes spinsymbol_0_-1_ {
+    from {
+        top: -33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+@-webkit-keyframes spinsymbol_0_0_ {
+    from {
+        top: 0%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+@-webkit-keyframes spinsymbol_0_1_ {
+    from {
+        top: 33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+@-webkit-keyframes spinsymbol_0_2_ {
+    from {
+        top: 66.66%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+/* Generic spin */
+
+@-webkit-keyframes genericSymbolSpin {
+    from {
+        top: -33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+/* Spin Resolve */
+
+@-webkit-keyframes resolvesymbol_0_-1_ {
+    from {
+        top: -33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: -33.33%;
+        opacity: 100%;
+    }
+}
+
+@-webkit-keyframes resolvesymbol_0_0_ {
+    from {
+        top: -33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 0%;
+        opacity: 100%;
+    }
+}
+
+@-webkit-keyframes resolvesymbol_0_1_ {
+    from {
+        top: -33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 33.33%;
+        opacity: 100%;
+    }
+}
+
+@-webkit-keyframes resolvesymbol_0_2_ {
+    from {
+        top: -33.33%;
+        opacity: 100%;
+    }
+
+    to {
+        top: 66.66%;
+        opacity: 100%;
+    }
+}

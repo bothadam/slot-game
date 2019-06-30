@@ -1,0 +1,42 @@
+.betSettings {
+    grid-area: betSettings;
+    display: grid;
+    grid-template-areas:
+        "minusButton      totalBet      plusButton";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-content: center;
+    justify-content: center;
+}
+
+.minusButton {
+    grid-area: minusButton;
+    background-image: url("../assets/console/minusButton.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.plusButton {
+    grid-area: plusButton;
+    background-image: url("../assets/console/plusButton.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.spinButton {
+    grid-area: spinButton;
+    background-image: url("../assets/console/spinButton.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.autoplayButton {
+    grid-area: autoplayButton;
+    background-image: url("../assets/console/autoplayButton.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
