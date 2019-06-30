@@ -1,11 +1,13 @@
 import {
     GameStateEvents
-} from "./GameStateEvents.js"
+} from "./GameStateEvents.js";
 
 var allReels = new Array();
 var gameStateEvents = new GameStateEvents();
 export class ReelController {
     constructor() {
+        var spinButton = document.getElementById("spinButton");
+        spinButton.addEventListener("click", this.spinButtonClicked);
         for (var reel = 0; reel < 5; reel++) {
             allReels[reel] = new Array();
             for (var row = -1; row < 3; row++) {

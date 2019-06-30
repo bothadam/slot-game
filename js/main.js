@@ -1,18 +1,18 @@
 import {
     ReelController
 } from "./ReelController.js"
-
-var betButton = document.getElementById("betButton");
-var spinButton = document.getElementById("spinButton");
-var autoplayButton = document.getElementById("autoplayButton");
+import {
+    BetSettingsController
+} from "./BetSettingsController.js"
 
 var reelController = new ReelController();
+var betSettingsController = new BetSettingsController();
 var gameState = "";
-
-spinButton.addEventListener("click", reelController.spinButtonClicked);
+var totalBet = 0;
 
 document.addEventListener("slotSpinning", onGameStateEventChanged, false);
 document.addEventListener("slotStopped", onGameStateEventChanged, false);
+document.addEventListener("onBetChanged", onBetChanged, false);
 
 function onGameStateEventChanged(event) {
     if (event.detail.state == "slotSpinning") {
@@ -22,4 +22,8 @@ function onGameStateEventChanged(event) {
         console.log('spin ended or something');
         gameState = "slotStopped";
     }
+}
+
+function onBetChanged(event) {
+    console.log('betchanged' + event.detail.newBet);
 }

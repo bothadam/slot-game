@@ -2,23 +2,32 @@
     grid-area: betSettings;
     display: grid;
     grid-template-areas:
-        "minusButton      totalBet      plusButton";
+        "betMinusButton      totalBetTextArea      betPlusButton";
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     align-content: center;
     justify-content: center;
 }
 
-.minusButton {
-    grid-area: minusButton;
+.betMinusButton {
+    grid-area: betMinusButton;
     background-image: url("../assets/console/minusButton.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-.plusButton {
-    grid-area: plusButton;
+.totalBetTextArea {
+    grid-area: totalBetTextArea;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    font-size: 48px;
+    color: white;
+}
+
+.betPlusButton {
+    grid-area: betPlusButton;
     background-image: url("../assets/console/plusButton.png");
     background-position: center;
     background-repeat: no-repeat;
