@@ -5,10 +5,13 @@ import {
     BetSettingsController
 } from "./BetSettingsController.js"
 
-var reelController = new ReelController();
-var betSettingsController = new BetSettingsController();
-var gameState = "";
 var totalBet = 0;
+var allValidBets = [10, 20, 50, 100];
+var currentBetIndex = 0;
+
+var reelController = new ReelController();
+var betSettingsController = new BetSettingsController(currentBetIndex, allValidBets);
+var gameState = "";
 
 document.addEventListener("slotSpinning", onGameStateEventChanged, false);
 document.addEventListener("slotStopped", onGameStateEventChanged, false);

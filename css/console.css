@@ -2,7 +2,7 @@
     grid-area: betSettings;
     display: grid;
     grid-template-areas:
-        "betMinusButton      totalBetTextArea      betPlusButton";
+        "betMinusButton      betDisplayArea      betPlusButton";
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     align-content: center;
@@ -17,8 +17,8 @@
     background-size: contain;
 }
 
-.totalBetTextArea {
-    grid-area: totalBetTextArea;
+.betDisplayArea {
+    grid-area: betDisplayArea;
     display: grid;
     align-content: center;
     justify-content: center;
