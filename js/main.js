@@ -21,12 +21,15 @@ function onGameStateEventChanged(event) {
     if (event.detail.state == "slotSpinning") {
         console.log('spin started');
         gameState = "slotSpinning";
+        betSettingsController.deactivateBetButtons();
     } else if (event.detail.state == "slotStopped") {
         console.log('spin ended or something');
         gameState = "slotStopped";
+        betSettingsController.activateBetButtons();
     }
 }
 
 function onBetChanged(event) {
-    console.log('betchanged' + event.detail.newBet);
+    totalBet = event.detail.newBet;
+    console.log(totalBet);
 }
