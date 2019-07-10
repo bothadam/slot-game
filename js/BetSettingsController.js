@@ -18,7 +18,7 @@ export class BetSettingsController {
         this._currentBetIndex = cur;
         this._allValidBets = allValid;
         this._betDisplayArea.innerHTML = this._allValidBets[this._currentBetIndex];
-        this._determineBetButtonsActive();
+        this.determineBetButtonsActive();
     }
 
     /**
@@ -47,6 +47,19 @@ export class BetSettingsController {
         this._setMinusButtonActive(true);
     }
 
+    determineBetButtonsActive() {
+        if (this._currentBetIndex != 0 && this._currentBetIndex != (this._allValidBets.length - 1)) {
+            this._setMinusButtonActive(true);
+            this._setPlusButtonActive(true);
+        } else if (this._currentBetIndex == 0) {
+            this._setMinusButtonActive(false);
+            this._setPlusButtonActive(true);
+        } else if (this._currentBetIndex == (this._allValidBets.length - 1)) {
+            this._setPlusButtonActive(false);
+            this._setMinusButtonActive(true);
+        }
+    }
+
     // private
 
     _minusButtonClicked() {
@@ -72,18 +85,7 @@ export class BetSettingsController {
 
     _onBetChangedEvent() {
         document.dispatchEvent(betSettingsEvents.betChangedEvent);
-        this._determineBetButtonsActive();
-    }
-
-    _determineBetButtonsActive() {
-        if (this._currentBetIndex != 0 && this._currentBetIndex != (this._allValidBets.length - 1)) {
-            this._setMinusButtonActive(true);
-            this._setPlusButtonActive(true);
-        } else if (this._currentBetIndex == 0) {
-            this._setMinusButtonActive(false);
-        } else if (this._currentBetIndex == (this._allValidBets.length - 1)) {
-            this._setPlusButtonActive(false);
-        }
+        this.determineBetButtonsActive();
     }
 
     _setPlusButtonActive(active) {
