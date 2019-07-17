@@ -17,9 +17,18 @@ export class ReelController {
                 var rand = Math.floor(Math.random() * (12 - 1 + 1) + 1);
                 document.getElementById(allReels[reel][row]).style.backgroundImage = "url('../assets/symbols/s" + rand +
                     ".png')";
-
             }
         }
+        this.animateWinningSymbols();
+    }
+
+    animateWinningSymbols(symbols) {
+        var sym = document.getElementById(allReels[1][1]);
+        sym.style.animationName = 'winningAnimation';
+        sym.style.animationTimingFunction = "linear";
+        sym.style.animationDuration = 1 + "s";
+        sym.style.animationPlayState = "running";
+        sym.style.animationIterationCount = "infinite";
     }
 
     spinButtonClicked() {
