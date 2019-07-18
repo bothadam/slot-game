@@ -19,16 +19,36 @@ export class ReelController {
                     ".png')";
             }
         }
-        this.animateWinningSymbols();
+        var winningNotches = new Array();
+        winningNotches = [{
+                reel: 0,
+                row: 1
+            }, {
+                reel: 1,
+                row: 0
+            },
+            {
+                reel: 2,
+                row: 0
+            },
+            {
+                reel: 3,
+                row: 0
+            }
+        ];
+        // winningNotches.push(winningNotch, winningNotch2);
+        this.animateWinningSymbols(winningNotches);
     }
 
-    animateWinningSymbols(symbols) {
-        var sym = document.getElementById(allReels[1][1]);
-        sym.style.animationName = 'winningAnimation';
-        sym.style.animationTimingFunction = "linear";
-        sym.style.animationDuration = 1 + "s";
-        sym.style.animationPlayState = "running";
-        sym.style.animationIterationCount = "infinite";
+    animateWinningSymbols(winningNotches) {
+        winningNotches.forEach(winningNotch => {
+            var sym = document.getElementById(allReels[winningNotch.reel][winningNotch.row]);
+            sym.style.animationName = 'winningAnimation';
+            sym.style.animationTimingFunction = "linear";
+            sym.style.animationDuration = 1 + "s";
+            sym.style.animationPlayState = "running";
+            sym.style.animationIterationCount = "infinite";
+        });
     }
 
     spinButtonClicked() {
