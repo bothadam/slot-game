@@ -1,0 +1,30 @@
+{
+  "name": "slot-game",
+  "version": "1.0.0",
+  "description": "Simply host the game using xampp (or mamp for mac), and open the main.html file in the html folder (yeah yeah i know i need and index.html file).",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bothadam/slot-game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bothadam/slot-game/issues"
+  },
+  "homepage": "https://github.com/bothadam/slot-game#readme",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-es2015": "^6.24.1",
+    "terser-webpack-plugin": "^1.4.1",
+    "webpack": "^4.39.2"
+  }
+}

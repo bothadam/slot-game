@@ -23,11 +23,19 @@ export class GameStateEvents {
 
     }
 
-    get slotSpinning() {
-        return this.slotSpinning;
-    }
+    // get slotSpinning() {
+    //     return this.slotSpinning;
+    // }
 
-    get slotStopped() {
-        return this.slotStopped;
-    }
+    // get slotStopped() {
+    //     return this.slotStopped;
+    // }
+
+    // set slotSpinning(value) {
+    //     this.slotSpinning = value;
+    // }
+
+    // set slotStopped(value) {
+    //     this.slotStopped = value;
+    // }
 }

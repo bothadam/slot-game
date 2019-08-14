@@ -13,8 +13,8 @@ export class BetSettingsEvents {
 
     }
 
-    get betChangedEvent() {
-        return this.betChangedEvent;
-    }
+    // get betChangedEvent() {
+    //     return this.betChangedEvent;
+    // }
 
 }
