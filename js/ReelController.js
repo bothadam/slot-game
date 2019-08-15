@@ -13,10 +13,10 @@ export class ReelController {
             for (var row = -1; row < 3; row++) {
                 //create map of reels
                 var symID = "symbol" + "_" + reel + "_" + row + "_";
-                allReels[reel][row] = symID;
 
-                //add symbols to reels
+                //Reposition and resize symbols to reels
                 var randomSymbol = "s" +  Math.floor(Math.random() * (5 - 1 + 1) + 1);
+                allReels[reel][row] = { symbolId: symID, assignedSymbolId: randomSymbol};
                 var stylesheetWidth = (document.getElementById("symbolContainer").getBoundingClientRect().width) / (symbolConfig.frames[randomSymbol].frame.w / symbolConfig.meta.size.w);
                 var stylesheetHeight = (document.getElementById("symbolContainer").getBoundingClientRect().height) / (symbolConfig.frames[randomSymbol].frame.h / symbolConfig.meta.size.h);
                 document.getElementById(symID + "img").style.width = stylesheetWidth;
@@ -26,7 +26,10 @@ export class ReelController {
                 var stylesheetMarginY = (document.getElementById(symID + "img").getBoundingClientRect().height) * (symbolConfig.frames[randomSymbol].frame.y / symbolConfig.meta.size.h);
                 document.getElementById(symID + "img").style.left = "-" + Math.ceil(stylesheetMarginX) + "px";
                 document.getElementById(symID + "img").style.top = "-" + (stylesheetMarginY) + "px";
+
             }
+
+            window.addEventListener('resize', this.onWindowResize);
         }
 
         var winningNotches = new Array();
@@ -52,7 +55,7 @@ export class ReelController {
 
     animateWinningSymbols(winningNotches) {
         winningNotches.forEach(winningNotch => {
-            var sym = document.getElementById(allReels[winningNotch.reel][winningNotch.row]);
+            var sym = document.getElementById(allReels[winningNotch.reel][winningNotch.row].symbolId);
             sym.style.animationName = 'winningAnimation';
             sym.style.animationTimingFunction = "linear";
             sym.style.animationDuration = 1 + "s";
@@ -62,9 +65,9 @@ export class ReelController {
     }
 
     spinButtonClicked() {
-        var singleSpinDuration = 0.25;
-        var totalSpinDuration = 1;
-        var resolveTime = 1;
+        var singleSpinDuration = 0.5;
+        var totalSpinDuration = 2;
+        var resolveTime = 1.5;
         var totalResolveTime = resolveTime;
 
         document.dispatchEvent(gameStateEvents.slotSpinning);
@@ -80,7 +83,7 @@ export class ReelController {
             var time = singleSpinDuration;
             var originalTime = time;
             for (var row = -1; row < 3; row++) {
-                var sym = document.getElementById(allReels[reel][row].toString());
+                var sym = document.getElementById(allReels[reel][row].symbolId.toString());
                 sym.addEventListener("webkitAnimationEnd", moveUpSymbol);
                 sym.style.animationName = "spinsymbol_0_" + row + "_";
                 sym.style.animationTimingFunction = "linear";
@@ -131,6 +134,27 @@ export class ReelController {
             document.getElementById(this.id + "img").style.top = "-" + (stylesheetMarginY) + "px";
             
             document.dispatchEvent(gameStateEvents.slotStopped);
+        }
+    }
+
+    onWindowResize() {
+        for (var reel = 0; reel < 5; reel++) {
+            for (var row = -1; row < 3; row++) {
+                //create map of reels
+                // console.log((allReels[reel][row].assignedSymbolId));
+                var symID = allReels[reel][row].symbolId;
+                var symbolToResize = allReels[reel][row].assignedSymbolId;
+                var stylesheetWidth = (document.getElementById("symbolContainer").getBoundingClientRect().width) / (symbolConfig.frames[symbolToResize].frame.w / symbolConfig.meta.size.w);
+                var stylesheetHeight = (document.getElementById("symbolContainer").getBoundingClientRect().height) / (symbolConfig.frames[symbolToResize].frame.h / symbolConfig.meta.size.h);
+                document.getElementById(symID + "img").style.width = stylesheetWidth;
+                document.getElementById(symID + "img").style.height = stylesheetHeight;
+
+                var stylesheetMarginX = ((document.getElementById(symID + "img").getBoundingClientRect().width) * (symbolConfig.frames[symbolToResize].frame.x / symbolConfig.meta.size.w));
+                var stylesheetMarginY = (document.getElementById(symID + "img").getBoundingClientRect().height) * (symbolConfig.frames[symbolToResize].frame.y / symbolConfig.meta.size.h);
+                document.getElementById(symID + "img").style.left = "-" + Math.ceil(stylesheetMarginX) + "px";
+                document.getElementById(symID + "img").style.top = "-" + (stylesheetMarginY) + "px";
+
+            }
         }
     }
 }
