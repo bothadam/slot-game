@@ -1,208 +1,256 @@
+/* REEL 1 */
+
 .symbol_0_-1_ {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: rgb(0, 0, 0);
     position: absolute;
     width: 100%;
     height: 33.33%;
     top: -33.33%;
+    overflow: hidden;
+}
+
+.symbolContainer {
+    position: absolute;
+    width: 88%;
+    height: 88%;
+    margin: 6% 6% 6% 6%;
+    overflow: hidden;
+}
+
+#symbol_0_-1_img {
+    position: absolute;
 }
 
 .symbol_0_0_ {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: rgb(0, 0, 0);
     position: absolute;
     width: 100%;
-    height: 33.33%;
+    height: 33%;
     top: 0%;
+    overflow: hidden;
+}
+
+#symbol_0_0_img {
+    position: absolute;
 }
 
 .symbol_0_1_ {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: rgb(0, 0, 0);
     position: absolute;
     width: 100%;
     height: 33.33%;
     top: 33.33%;
+    overflow: hidden;
+}
+
+#symbol_0_1_img {
+    position: absolute;
 }
 
 .symbol_0_2_ {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: rgb(0, 0, 0);
     position: absolute;
     width: 100%;
     height: 33.33%;
     top: 66.66%;
+    overflow: hidden;
 }
 
-/* REEL 1 */
-.symbol_1_-1_ {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: rgb(0, 0, 0);
+#symbol_0_2_img {
     position: absolute;
-    width: 100%;
-    height: 33.33%;
-    top: -33.33%;
-}
-
-.symbol_1_0_ {
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 100%;
-    height: 33.33%;
-    background-color: rgb(0, 0, 0);
-    top: 0%;
-}
-
-.symbol_1_1_ {
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 100%;
-    height: 33.33%;
-    background-color: rgb(0, 0, 0);
-    top: 33.33%;
-}
-
-.symbol_1_2_ {
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 100%;
-    height: 33.33%;
-    background-color: rgb(0, 0, 0);
-    top: 66.66%;
 }
 
 /* REEL 2 */
-
-.symbol_2_-1_ {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: rgb(0, 0, 0);
+.symbol_1_-1_ {
     position: absolute;
     width: 100%;
     height: 33.33%;
     top: -33.33%;
+    overflow: hidden;
 }
 
-.symbol_2_0_ {
-    background-size: contain;
-    background-repeat: no-repeat;
+#symbol_1_-1_img {
+    position: absolute;
+}
+
+.symbol_1_0_ {
     position: absolute;
     width: 100%;
     height: 33.33%;
-    background-color: rgb(0, 0, 0);
     top: 0%;
+    overflow: hidden;
 }
 
-.symbol_2_1_ {
-    background-size: contain;
-    background-repeat: no-repeat;
+#symbol_1_0_img {
+    position: absolute;
+}
+
+.symbol_1_1_ {
     position: absolute;
     width: 100%;
     height: 33.33%;
-    background-color: rgb(0, 0, 0);
     top: 33.33%;
+    overflow: hidden;
 }
 
-.symbol_2_2_ {
-    background-size: contain;
-    background-repeat: no-repeat;
+#symbol_1_1_img {
+    position: absolute;
+}
+
+.symbol_1_2_ {
     position: absolute;
     width: 100%;
     height: 33.33%;
-    background-color: rgb(0, 0, 0);
     top: 66.66%;
+    overflow: hidden;
 }
 
+#symbol_1_2_img {
+    position: absolute;
+}
 
 /* REEL 3 */
 
-.symbol_3_-1_ {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: rgb(0, 0, 0);
+.symbol_2_-1_ {
     position: absolute;
     width: 100%;
     height: 33.33%;
     top: -33.33%;
+    overflow: hidden;
 }
 
-.symbol_3_0_ {
-    background-size: contain;
-    background-repeat: no-repeat;
+#symbol_2_-1_img {
+    position: absolute;
+}
+
+.symbol_2_0_ {
     position: absolute;
     width: 100%;
     height: 33.33%;
-    background-color: rgb(0, 0, 0);
     top: 0%;
+    overflow: hidden;
 }
 
-.symbol_3_1_ {
-    background-size: contain;
-    background-repeat: no-repeat;
+#symbol_2_0_img {
+    position: absolute;
+}
+
+.symbol_2_1_ {
     position: absolute;
     width: 100%;
     height: 33.33%;
-    background-color: rgb(0, 0, 0);
     top: 33.33%;
+    overflow: hidden;
 }
 
-.symbol_3_2_ {
-    background-size: contain;
-    background-repeat: no-repeat;
+#symbol_2_1_img {
+    position: absolute;
+}
+
+.symbol_2_2_ {
     position: absolute;
     width: 100%;
     height: 33.33%;
-    background-color: rgb(0, 0, 0);
     top: 66.66%;
+    overflow: hidden;
 }
 
+#symbol_2_2_img {
+    position: absolute;
+}
 
 /* REEL 4 */
 
-.symbol_4_-1_ {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: rgb(0, 0, 0);
+.symbol_3_-1_ {
     position: absolute;
     width: 100%;
     height: 33.33%;
     top: -33.33%;
+    overflow: hidden;
+}
+
+#symbol_3_-1_img {
+    position: absolute;
+}
+
+.symbol_3_0_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    top: 0%;
+    overflow: hidden;
+}
+
+#symbol_3_0_img {
+    position: absolute;
+}
+
+.symbol_3_1_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    top: 33.33%;
+    overflow: hidden;
+}
+
+#symbol_3_1_img {
+    position: absolute;
+}
+
+.symbol_3_2_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    top: 66.66%;
+    overflow: hidden;
+}
+
+#symbol_3_2_img {
+    position: absolute;
+}
+
+/* REEL 5 */
+
+.symbol_4_-1_ {
+    position: absolute;
+    width: 100%;
+    height: 33.33%;
+    top: -33.33%;
+    overflow: hidden;
+}
+
+#symbol_4_-1_img {
+    position: absolute;
 }
 
 .symbol_4_0_ {
-    background-size: contain;
-    background-repeat: no-repeat;
     position: absolute;
     width: 100%;
     height: 33.33%;
-    background-color: rgb(0, 0, 0);
     top: 0%;
+    overflow: hidden;
+}
+
+#symbol_4_0_img {
+    position: absolute;
 }
 
 .symbol_4_1_ {
-    background-size: contain;
-    background-repeat: no-repeat;
     position: absolute;
     width: 100%;
     height: 33.33%;
-    background-color: rgb(0, 0, 0);
     top: 33.33%;
+    overflow: hidden;
+}
+
+#symbol_4_1_img {
+    position: absolute;
 }
 
 .symbol_4_2_ {
-    background-size: contain;
-    background-repeat: no-repeat;
     position: absolute;
     width: 100%;
     height: 33.33%;
-    background-color: rgb(0, 0, 0);
     top: 66.66%;
+    overflow: hidden;
+}
+
+#symbol_4_2_img {
+    position: absolute;
 }

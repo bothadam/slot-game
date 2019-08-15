@@ -4,6 +4,8 @@ import {
 
 var allReels = new Array();
 var gameStateEvents = new GameStateEvents();
+const symbolConfig = require('../assets/symbols/allSyms.json');
+
 export class ReelController {
     constructor() {
         for (var reel = 0; reel < 5; reel++) {
@@ -14,11 +16,19 @@ export class ReelController {
                 allReels[reel][row] = symID;
 
                 //add symbols to reels
-                var rand = Math.floor(Math.random() * (5 - 1 + 1) + 1);
-                document.getElementById(allReels[reel][row]).style.backgroundImage = "url('../assets/symbols/s" + rand +
-                    ".png')";
+                var randomSymbol = "s" +  Math.floor(Math.random() * (5 - 1 + 1) + 1);
+                var stylesheetWidth = (document.getElementById("symbolContainer").getBoundingClientRect().width) / (symbolConfig.frames[randomSymbol].frame.w / symbolConfig.meta.size.w);
+                var stylesheetHeight = (document.getElementById("symbolContainer").getBoundingClientRect().height) / (symbolConfig.frames[randomSymbol].frame.h / symbolConfig.meta.size.h);
+                document.getElementById(symID + "img").style.width = stylesheetWidth;
+                document.getElementById(symID + "img").style.height = stylesheetHeight;
+
+                var stylesheetMarginX = ((document.getElementById(symID + "img").getBoundingClientRect().width) * (symbolConfig.frames[randomSymbol].frame.x / symbolConfig.meta.size.w));
+                var stylesheetMarginY = (document.getElementById(symID + "img").getBoundingClientRect().height) * (symbolConfig.frames[randomSymbol].frame.y / symbolConfig.meta.size.h);
+                document.getElementById(symID + "img").style.left = "-" + Math.ceil(stylesheetMarginX) + "px";
+                document.getElementById(symID + "img").style.top = "-" + (stylesheetMarginY) + "px";
             }
         }
+
         var winningNotches = new Array();
         winningNotches = [{
                 reel: 0,
@@ -37,7 +47,7 @@ export class ReelController {
             }
         ];
         // winningNotches.push(winningNotch, winningNotch2);
-        this.animateWinningSymbols(winningNotches);
+        // this.animateWinningSymbols(winningNotches);
     }
 
     animateWinningSymbols(winningNotches) {
@@ -52,12 +62,19 @@ export class ReelController {
     }
 
     spinButtonClicked() {
-        var singleSpinDuration = 0.2;
-        var totalSpinDuration = 2;
+        var singleSpinDuration = 0.25;
+        var totalSpinDuration = 1;
         var resolveTime = 1;
         var totalResolveTime = resolveTime;
 
         document.dispatchEvent(gameStateEvents.slotSpinning);
+
+        // Blur the symbols.
+        var allSymbolClasses = document.getElementsByClassName("symbolContainer");
+        for (let i = 0; i < allSymbolClasses.length; i++) {
+            allSymbolClasses[i].style.filter= "blur(2px)"
+            
+        }
 
         for (var reel = 0; reel < 5; reel++) {
             var time = singleSpinDuration;
@@ -85,6 +102,12 @@ export class ReelController {
         }
 
         function resolveSymbol() {
+            // Unblur the symbols.
+            var allSymbolClasses = document.getElementsByClassName("symbolContainer");
+        for (let i = 0; i < allSymbolClasses.length; i++) {
+            allSymbolClasses[i].style.filter= "unset"
+            
+        }
             resolveTime = 0 + (totalResolveTime * 0.25);
             this.removeEventListener("webkitAnimationEnd", resolveSymbol);
             this.style.animationDuration = resolveTime + "s";
@@ -94,10 +117,19 @@ export class ReelController {
             this.style.animationPlayState = "running";
             this.style.animationIterationCount = 1;
             this.style.animationFillMode = "forwards";
-            var rand = Math.floor(Math.random() * (12 - 1 + 1) + 1);
-            document.getElementById(allReels[animName[1]][animName[2]]).style.backgroundImage = "url('../assets/symbols/s" +
-                rand +
-                ".png')";
+
+            //add symbols to reels
+            var randomSymbol = "s" +  Math.floor(Math.random() * (5 - 1 + 1) + 1);
+            var stylesheetWidth = (document.getElementById("symbolContainer").getBoundingClientRect().width) / (symbolConfig.frames[randomSymbol].frame.w / symbolConfig.meta.size.w);
+            var stylesheetHeight = (document.getElementById("symbolContainer").getBoundingClientRect().height) / (symbolConfig.frames[randomSymbol].frame.h / symbolConfig.meta.size.h);
+            document.getElementById(this.id + "img").style.width = stylesheetWidth;
+            document.getElementById(this.id + "img").style.height = stylesheetHeight;
+
+            var stylesheetMarginX = ((document.getElementById(this.id + "img").getBoundingClientRect().width) * (symbolConfig.frames[randomSymbol].frame.x / symbolConfig.meta.size.w));
+            var stylesheetMarginY = (document.getElementById(this.id + "img").getBoundingClientRect().height) * (symbolConfig.frames[randomSymbol].frame.y / symbolConfig.meta.size.h);
+            document.getElementById(this.id + "img").style.left = "-" + Math.ceil(stylesheetMarginX) + "px";
+            document.getElementById(this.id + "img").style.top = "-" + (stylesheetMarginY) + "px";
+            
             document.dispatchEvent(gameStateEvents.slotStopped);
         }
     }
