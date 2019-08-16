@@ -23,15 +23,14 @@ class Main {
         document.addEventListener("slotStopped", this._onGameStateEventChanged.bind(this), false);
         document.addEventListener("onBetChanged", this._onBetChanged.bind(this), false);
         document.addEventListener("spinButtonClicked", this._onSpinButtonClicked.bind(this), false);
+        document.addEventListener("autoplayButtonClicked", this._onAutoplayButtonClicked.bind(this), false);
     }
 
     _onGameStateEventChanged(event) {
         if (event.detail.state == "slotSpinning") {
-            console.log('spin started');
             this._gameState = "slotSpinning";
             this._betSettingsController.deactivateBetButtons();
         } else if (event.detail.state == "slotStopped") {
-            console.log('spin ended or something');
             this._gameState = "slotStopped";
             this._betSettingsController.determineBetButtonsActive();
             this._spinButtonController.setSpinButtonActive(true);
@@ -40,11 +39,14 @@ class Main {
 
     _onBetChanged(event) {
         this._totalBet = event.detail.newBet;
-        console.log(this._totalBet);
     }
 
     _onSpinButtonClicked(event) {
         this._reelController.spinButtonClicked();
+    }
+
+    _onAutoplayButtonClicked(event) {
+        this._reelController.autoplayButtonClicked();
     }
 
 }

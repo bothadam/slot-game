@@ -137,11 +137,50 @@ export class ReelController {
         }
     }
 
+    autoplayButtonClicked() {
+        var counter = 1;
+
+        spinReel();
+        function spinReel() {
+            var reel = document.getElementById('reel' + counter);
+
+            reel.addEventListener("webkitAnimationEnd", moveUpReel);
+            reel.style.animationName = 'spinReelOut';
+            reel.style.animationTimingFunction = "linear";
+            reel.style.animationDuration = 0.5 + "s";
+            reel.style.animationPlayState = "running";
+            reel.style.animationFillMode = "forwards";
+            counter++;
+            if (counter === 6) {
+                return;
+            }
+            setTimeout(spinReel, 100);
+        }
+
+        function moveUpReel() {
+            //cleanup 
+            this.style.animationName = "";
+            this.style.animationTimingFunction = "";
+            this.style.animationDuration = "";
+            this.style.animationPlayState = "";
+            this.style.animationFillMode = "";
+
+            this.style.top = "-100%";
+
+            this.style.animationName = "spinReelIn";
+            this.style.animationTimingFunction = "linear";
+            this.style.animationDuration = 0.5 + "s";
+            this.style.animationPlayState = "running";
+            this.style.animationFillMode = "forwards";
+        }
+    }
+
+    
+
     onWindowResize() {
         for (var reel = 0; reel < 5; reel++) {
             for (var row = -1; row < 3; row++) {
                 //create map of reels
-                // console.log((allReels[reel][row].assignedSymbolId));
                 var symID = allReels[reel][row].symbolId;
                 var symbolToResize = allReels[reel][row].assignedSymbolId;
                 var stylesheetWidth = (document.getElementById("symbolContainer").getBoundingClientRect().width) / (symbolConfig.frames[symbolToResize].frame.w / symbolConfig.meta.size.w);

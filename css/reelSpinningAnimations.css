@@ -1,3 +1,32 @@
+
+@-webkit-keyframes spinReelOut {
+    0% {
+        top: 0%;
+        filter: blur(0px);
+    }
+
+    40% {
+        top: -10%;
+    }
+
+    100% {
+        top: 133%;
+        filter: blur(2px);
+    }
+}
+
+@-webkit-keyframes spinReelIn {
+    from {
+        top: -100%;
+        filter: blur(2px);
+    }
+
+    to {
+        top: 0%;
+        filter: blur(0px);
+    }
+}
+
 /* Spin Start */
 
 @-webkit-keyframes spinsymbol_0_-1_ {
