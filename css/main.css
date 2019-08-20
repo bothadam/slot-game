@@ -65,29 +65,34 @@
 .reel1 {
     position: relative;
     z-index: 1000;
+    top: 0%;
 }
 
 
 .reel2 {
     position: relative;
     z-index: 1000;
+    top: 0%;
 }
 
 .reel3 {
     position: relative;
     z-index: 1000;
+    top: 0%;
 
 }
 
 .reel4 {
     position: relative;
     z-index: 1000;
+    top: 0%;
 
 }
 
 .reel5 {
     position: relative;
     z-index: 1000;
+    top: 0%;
 }
 
 .top-block {
@@ -102,5 +107,6 @@
     grid-template-columns: 4fr 3fr 2fr 2fr;
     grid-template-rows: 1fr;
     grid-template-areas:
-        "betSettings      spinButton      autoplayButton       .";
+        "betSettings      spinButton      autoplayButton       testButton";
 }
+

@@ -24,6 +24,7 @@ class Main {
         document.addEventListener("onBetChanged", this._onBetChanged.bind(this), false);
         document.addEventListener("spinButtonClicked", this._onSpinButtonClicked.bind(this), false);
         document.addEventListener("autoplayButtonClicked", this._onAutoplayButtonClicked.bind(this), false);
+        document.addEventListener("testButtonClicked", this._onTestButtonClicked.bind(this), false);
     }
 
     _onGameStateEventChanged(event) {
@@ -47,6 +48,10 @@ class Main {
 
     _onAutoplayButtonClicked(event) {
         this._reelController.autoplayButtonClicked();
+    }
+
+    _onTestButtonClicked(event) {
+       this._reelController.testButtonClicked(); 
     }
 
 }

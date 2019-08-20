@@ -50,3 +50,12 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+
+.testButton {
+    grid-area: testButton;
+    background-image: url("../assets/console/testButton.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}

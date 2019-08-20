@@ -1,6 +1,7 @@
 export class SpinButtonController {
     _spinButton = document.getElementById("spinButton");
     _autoplayButton = document.getElementById("autoplayButton");
+    _testButton = document.getElementById("testButton");
     _spinButtonActive = true;
 
     spinButtonClicked = new CustomEvent(
@@ -15,9 +16,13 @@ export class SpinButtonController {
 
     autoplayButtonClicked = new CustomEvent(
         "autoplayButtonClicked", {
-            // detail: {
-            //     spinButtonClicked: "true",
-            // },
+            bubbles: true,
+            cancelable: true
+        }
+    );
+
+    testButtonClicked = new CustomEvent(
+        "testButtonClicked", {
             bubbles: true,
             cancelable: true
         }
@@ -26,6 +31,7 @@ export class SpinButtonController {
     constructor() {
         this._spinButton.addEventListener("click", this._spinButtonClicked.bind(this));
         this._autoplayButton.addEventListener("click", this._autoplayButtonClicked.bind(this));
+        this._testButton.addEventListener("click", this._testButtonClicked.bind(this));
     }
 
     //public
@@ -45,6 +51,11 @@ export class SpinButtonController {
 
     _autoplayButtonClicked() {
         document.dispatchEvent(this.autoplayButtonClicked);
+    }
+
+    _testButtonClicked() {
+        console.log('dispatch');
+        document.dispatchEvent(this.testButtonClicked);
     }
 
     _setSpinButtonActive(active) {

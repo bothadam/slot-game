@@ -3,6 +3,13 @@ import {
 } from "./GameStateEvents.js";
 
 var allReels = new Array();
+var allSlots = new Array();
+var posReel1 = 0;
+var posReel2 = 0;
+var posReel3 = 0;
+var posReel4 = 0;
+var posReel5 = 0;
+
 var gameStateEvents = new GameStateEvents();
 const symbolConfig = require('../assets/symbols/allSyms.json');
 
@@ -10,13 +17,19 @@ export class ReelController {
     constructor() {
         for (var reel = 0; reel < 5; reel++) {
             allReels[reel] = new Array();
+            var actualReel = reel + 1;
+            allSlots.push(document.getElementById('reel' + actualReel));
             for (var row = -1; row < 3; row++) {
                 //create map of reels
                 var symID = "symbol" + "_" + reel + "_" + row + "_";
 
                 //Reposition and resize symbols to reels
                 var randomSymbol = "s" +  Math.floor(Math.random() * (5 - 1 + 1) + 1);
-                allReels[reel][row] = { symbolId: symID, assignedSymbolId: randomSymbol};
+                allReels[reel][row] = { 
+                    symbol: document.getElementById(symID),
+                    documentsymbolId: symID,
+                    assignedSymbolId: randomSymbol
+                };
                 var stylesheetWidth = (document.getElementById("symbolContainer").getBoundingClientRect().width) / (symbolConfig.frames[randomSymbol].frame.w / symbolConfig.meta.size.w);
                 var stylesheetHeight = (document.getElementById("symbolContainer").getBoundingClientRect().height) / (symbolConfig.frames[randomSymbol].frame.h / symbolConfig.meta.size.h);
                 document.getElementById(symID + "img").style.width = stylesheetWidth;
@@ -28,7 +41,6 @@ export class ReelController {
                 document.getElementById(symID + "img").style.top = "-" + (stylesheetMarginY) + "px";
 
             }
-
             window.addEventListener('resize', this.onWindowResize);
         }
 
@@ -53,16 +65,16 @@ export class ReelController {
         // this.animateWinningSymbols(winningNotches);
     }
 
-    animateWinningSymbols(winningNotches) {
-        winningNotches.forEach(winningNotch => {
-            var sym = document.getElementById(allReels[winningNotch.reel][winningNotch.row].symbolId);
-            sym.style.animationName = 'winningAnimation';
-            sym.style.animationTimingFunction = "linear";
-            sym.style.animationDuration = 1 + "s";
-            sym.style.animationPlayState = "running";
-            sym.style.animationIterationCount = "infinite";
-        });
-    }
+    // animateWinningSymbols(winningNotches) {
+    //     winningNotches.forEach(winningNotch => {
+    //         var sym = document.getElementById(allReels[winningNotch.reel][winningNotch.row].symbolId);
+    //         sym.style.animationName = 'winningAnimation';
+    //         sym.style.animationTimingFunction = "linear";
+    //         sym.style.animationDuration = 1 + "s";
+    //         sym.style.animationPlayState = "running";
+    //         sym.style.animationIterationCount = "infinite";
+    //     });
+    // }
 
     spinButtonClicked() {
         var singleSpinDuration = 0.5;
@@ -83,7 +95,7 @@ export class ReelController {
             var time = singleSpinDuration;
             var originalTime = time;
             for (var row = -1; row < 3; row++) {
-                var sym = document.getElementById(allReels[reel][row].symbolId.toString());
+                var sym = allReels[reel][row].symbol;
                 sym.addEventListener("webkitAnimationEnd", moveUpSymbol);
                 sym.style.animationName = "spinsymbol_0_" + row + "_";
                 sym.style.animationTimingFunction = "linear";
@@ -175,7 +187,50 @@ export class ReelController {
         }
     }
 
+    testButtonClicked(){
+        window.requestAnimationFrame(requestAnimationFunc.bind(null, 0));
+        window.setTimeout(function() {
+            window.requestAnimationFrame(requestAnimationFunc.bind(null, 1));
+        }, 100);
+        window.setTimeout(function() {
+            window.requestAnimationFrame(requestAnimationFunc.bind(null, 2));
+        }, 200);
+        window.setTimeout(function() {
+            window.requestAnimationFrame(requestAnimationFunc.bind(null, 3));
+        }, 300);
+        window.setTimeout(function() {
+            window.requestAnimationFrame(requestAnimationFunc.bind(null, 4));
+        }, 400);
+
+        function requestAnimationFunc(slotToMove) {
+            console.log('jaaa-' + slotToMove + '-');
+            moveSlot(slotToMove);
+            // window.setTimeout(moveSlot, 100, 1);
+            // window.setTimeout(moveSlot, 200, 2);
+            // window.setTimeout(moveSlot, 300, 3);
+            // window.setTimeout(moveSlot, 400, 4);
+
+            // moveSlot(1);
+            // moveSlot(2);
+            // moveSlot(3);
+            // moveSlot(4);
+            function moveSlot(number) {
+                var slotPos = allSlots[number].style.top ?  parseInt(allSlots[number].style.top.split("#")[0]) : 0;
+                
+                console.log('yass' + slotPos);
+                if (slotPos >= 133) {
+                    allSlots[number].style.top = -133 + "%";
+                } else {
+                    slotPos+= 3; 
+                    allSlots[number].style.top = slotPos + "%"; 
+                }
+            }
+            window.requestAnimationFrame(requestAnimationFunc.bind(null, slotToMove));
+        }
+    }
+
     
+   
 
     onWindowResize() {
         for (var reel = 0; reel < 5; reel++) {
